@@ -22,6 +22,7 @@ namespace WM2_C1.Controllers
         public async Task<IActionResult> Index()
         {
             var webTechnologyDBContext = _context.Bookings.Include(b => b.BookingHotel).Include(b => b.BookingUser);
+            Console.WriteLine(_context.Database.EnsureCreated());
             return View(await webTechnologyDBContext.ToListAsync());
         }
 
