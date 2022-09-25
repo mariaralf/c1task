@@ -1,0 +1,49 @@
+﻿@model WM2_C1.Hotel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редагувати</h1>
+
+<h4>Готель</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HotelId" />
+            <div class="form-group">
+                <label asp-for="HotelName" class="control-label"></label>
+                <input asp-for="HotelName" class="form-control" />
+                <span asp-validation-for="HotelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelImage" class="control-label"></label>
+                <input asp-for="HotelImage" class="form-control" />
+                <span asp-validation-for="HotelImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelDesc" class="control-label"></label>
+                <input asp-for="HotelDesc" class="form-control" />
+                <span asp-validation-for="HotelDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelNightPrice" class="control-label"></label>
+                <input asp-for="HotelNightPrice" class="form-control" />
+                <span asp-validation-for="HotelNightPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутись до переліку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

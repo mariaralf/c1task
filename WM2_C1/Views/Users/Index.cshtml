@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WM2_C1.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Користувачі</h1>
+
+<p>
+    <a asp-action="Create">Створити</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserRoleNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPhone)
+            </td>
+            <td>
+                <a asp-controller="Roles" asp-action="Details" asp-route-id="@item.UserRoleNavigation.RoleId">
+                @Html.DisplayFor(modelItem => item.UserRoleNavigation.RoleName)
+                </a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UserId">Редагувати</a> |
+                <a asp-action="Details" asp-route-id="@item.UserId">Деталі</a> |
+                <a asp-action="Delete" asp-route-id="@item.UserId">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WM2_C1.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Бронювання</h1>
+
+<p>
+    <a asp-action="Create">Створити</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingHotel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </td>
+            <td>
+                <a asp-controller="Hotels" asp-action="Details" asp-route-id="@item.BookingHotel.HotelId"> 
+                @Html.DisplayFor(modelItem => item.BookingHotel.HotelName)
+                </a>
+            </td>
+            <td>
+                <a asp-controller="Users" asp-action="Details" asp-route-id="@item.BookingUser.UserId"> 
+                 @Html.DisplayFor(modelItem => item.BookingUser.UserName)
+                 @Html.DisplayFor(modelItem => item.BookingUser.UserSurname)
+                 </a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookingId">Редагувати</a> |
+                <a asp-action="Details" asp-route-id="@item.BookingId">Деталі</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookingId">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

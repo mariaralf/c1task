@@ -1,0 +1,41 @@
+﻿@model WM2_C1.Booking
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Деталі</h1>
+
+<div>
+    <h4>Бронювання</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BookingDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookingHotel)
+        </dt>
+        <dd class = "col-sm-10">
+               <a asp-controller="Hotels" asp-action="Details" asp-route-id="@Model.BookingHotel.HotelId"> 
+            @Html.DisplayFor(model => model.BookingHotel.HotelName)
+            </a>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookingUser)
+        </dt>
+        <dd class = "col-sm-10">
+            <a asp-controller="Users" asp-action="Details" asp-route-id="@Model.BookingUser.UserId"> 
+            @Html.DisplayFor(model => model.BookingUser.UserName)
+            @Html.DisplayFor(model => model.BookingUser.UserSurname)
+            </a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.BookingId">Редагувати</a> |
+    <a asp-action="Index">Повернутись до переліку</a>
+</div>
